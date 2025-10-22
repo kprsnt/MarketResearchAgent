@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research Agent</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Market Research Agent</h1>
+        <form id="research-form">
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" name="topic" required>
+            </div>
+            <div class="form-group">
+                <label for="length">Report Length</label>
+                <select id="length" name="length">
+                    <option value="short">Short</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="long">Long</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sections">Sections</label>
+                <select id="sections" name="sections" multiple>
+                    <option value="all" selected>All</option>
+                    <option value="executive_summary">Executive Summary</option>
+                    <option value="market_size_and_growth">Market Size and Growth</option>
+                    <option value="key_trends">Key Trends</option>
+                    <option value="competitive_landscape">Competitive Landscape</option>
+                    <option value="opportunities_and_challenges">Opportunities and Challenges</option>
+                    <option value="target_audience">Target Audience</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="audience">Target Audience</label>
+                <input type="text" id="audience" name="audience" value="business executives">
+            </div>
+            <button type="submit">Generate Report</button>
+        </form>
+        <div id="report-container">
+            <h2>Report</h2>
+            <div id="report-output"></div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
