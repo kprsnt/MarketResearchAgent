@@ -34,7 +34,7 @@ def generate_report_content(topic: str, length: str, sections: List[str], audien
         return "Error: GEMINI_API_KEY environment variable not set."
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
     sections_str = ""
     if "all" in sections:
