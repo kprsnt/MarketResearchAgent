@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Market Research Agent</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Market Research Agent</h1>
-        <form id="research-form">
-            <div class="form-group">
-                <label for="topic">Topic</label>
-                <input type="text" id="topic" name="topic" required>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">Market Research Agent</h1>
+        <form id="research-form" class="bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label for="topic" class="block text-gray-700 font-bold mb-2">Topic</label>
+                <input type="text" id="topic" name="topic" class="w-full px-3 py-2 border rounded-lg" required>
             </div>
-            <div class="form-group">
-                <label for="length">Report Length</label>
-                <select id="length" name="length">
+            <div class="mb-4">
+                <label for="length" class="block text-gray-700 font-bold mb-2">Report Length</label>
+                <select id="length" name="length" class="w-full px-3 py-2 border rounded-lg">
                     <option value="short">Short</option>
                     <option value="medium" selected>Medium</option>
                     <option value="long">Long</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="sections">Sections</label>
-                <select id="sections" name="sections" multiple>
+            <div class="mb-4">
+                <label for="sections" class="block text-gray-700 font-bold mb-2">Sections</label>
+                <select id="sections" name="sections" class="w-full px-3 py-2 border rounded-lg" multiple>
                     <option value="all" selected>All</option>
                     <option value="executive_summary">Executive Summary</option>
                     <option value="market_size_and_growth">Market Size and Growth</option>
@@ -34,15 +35,19 @@
                     <option value="target_audience">Target Audience</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="audience">Target Audience</label>
-                <input type="text" id="audience" name="audience" value="business executives">
+            <div class="mb-4">
+                <label for="audience" class="block text-gray-700 font-bold mb-2">Target Audience</label>
+                <input type="text" id="audience" name="audience" class="w-full px-3 py-2 border rounded-lg" value="business executives">
             </div>
-            <button type="submit">Generate Report</button>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700">Generate Report</button>
         </form>
-        <div id="report-container">
-            <h2>Report</h2>
-            <div id="report-output"></div>
+        <div id="report-container" class="bg-white p-6 rounded-lg shadow-md mt-6">
+            <h2 class="text-2xl font-bold mb-4">Report</h2>
+            <div id="loading-spinner" class="hidden text-center">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                <p class="mt-2">Generating report...</p>
+            </div>
+            <div id="report-output" class="prose max-w-none"></div>
         </div>
     </div>
     <script src="/static/script.js"></script>

@@ -1,5 +1,6 @@
 import google.generativeai as genai
 import os
+import markdown2
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -34,7 +35,7 @@ def generate_report_content(topic: str, length: str, sections: List[str], audien
         return "Error: GEMINI_API_KEY environment variable not set."
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.5-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash')
 
     sections_str = ""
     if "all" in sections:
@@ -72,5 +73,6 @@ async def read_root(request: Request):
 
 @app.post("/generate_report")
 async def generate_report(request: ResearchRequest):
-    report = generate_report_content(request.topic, request.length, request.sections, request.audience)
-    return {"report": report}
+    report_markdown = generate_report_content(request.topic, request.length, request.sections, request.audience)
+    report_html = markdown2.markdown(report_markdown, extras=["tables", "fenced-code-blocks", "spoiler"])
+    return {"report": report_html}

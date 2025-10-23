@@ -10,7 +10,10 @@ document.getElementById("research-form").addEventListener("submit", async functi
     const audience = formData.get("audience");
 
     const reportOutput = document.getElementById("report-output");
-    reportOutput.innerHTML = "Generating report... Please wait.";
+    const loadingSpinner = document.getElementById("loading-spinner");
+
+    reportOutput.innerHTML = "";
+    loadingSpinner.classList.remove("hidden");
 
     const response = await fetch("/generate_report", {
         method: "POST",
@@ -26,5 +29,6 @@ document.getElementById("research-form").addEventListener("submit", async functi
     });
 
     const data = await response.json();
+    loadingSpinner.classList.add("hidden");
     reportOutput.innerHTML = data.report;
 });

@@ -1,5 +1,5 @@
 google-generativeai
-rich
 fastapi
 uvicorn
 jinja2
+markdown2
